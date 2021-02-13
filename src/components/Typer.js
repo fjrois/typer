@@ -14,10 +14,10 @@ class Typer extends React.Component {
     this.state = {
       cursorIndex: 0,
       config: {
-        lowercase: false,
+        lowercase: true,
         numberOfParagraphs: 1,
-        maxWords: 2,
-        minWords: 1,
+        maxWords: 10,
+        minWords: 2,
         textType: 'gibberish', // 'gibberish' or 'lorem';
       },
       inputValue: '',
