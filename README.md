@@ -1,5 +1,7 @@
 # TODO
 
+## Present
+
 - [ ] Measure typing speed
 - [ ] Signal wrong char
 - [ ] Color part of text covered
@@ -10,7 +12,13 @@
 - [ ] Login
 - [ ] Data recording
 - [ ] Simple statistics
+- [ ] ESC to restart text
+- [ ] Shortcut for next text?
+
+## Future
+
 - [ ] Adds?
+- [ ] SEO?
 
 # Getting Started with Create React App
 
