@@ -17,9 +17,6 @@ class FirstComponent extends React.Component {
     const { isBlogDisplayed } = this.props;
     return (
       <>
-        <p>This is just the beginning.</p>
-        <p>Por algo hay que empezar!!</p>
-
         <button onClick={this.redirectToMainSite}>Main site</button>
         <button onClick={this.showAlert}>Alert me</button>
         <button
