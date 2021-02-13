@@ -1,3 +1,17 @@
+# TODO
+
+- [ ] Measure typing speed
+- [ ] Signal wrong char
+- [ ] Color part of text covered
+- [ ] Apply configs immediately (at least lowercase). Recover functionality?
+- [ ] Blinking cursor
+- [ ] Code instead of plain text
+- [ ] Next button
+- [ ] Login
+- [ ] Data recording
+- [ ] Simple statistics
+- [ ] Adds?
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
