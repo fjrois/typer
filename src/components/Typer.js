@@ -98,7 +98,7 @@ class Typer extends React.Component {
         textType,
       } = this.state.config;
 
-      const baseUrl = 'http://www.randomtext.me/api';
+      const baseUrl = 'https://www.randomtext.me/api';
       const fullUrl = `${baseUrl}/${textType}/p-${numberOfParagraphs}/${minWords}-${maxWords}`;
       console.log('fullUrl:', fullUrl);
 
