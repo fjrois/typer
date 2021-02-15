@@ -9,14 +9,38 @@ class Typer extends React.Component {
     this.state = {
       config: {
         lowercase: true,
+        maxWords: 5,
+        minWords: 5,
         numberOfParagraphs: 1,
-        maxWords: 10,
-        minWords: 2,
         textType: 'gibberish', // 'gibberish' or 'lorem';
+      },
+      wpm: {
+        best: { gross: null, net: null },
+        last: { gross: null, net: null },
       },
     };
 
     this.handleConfigChange = this.handleConfigChange.bind(this);
+    this.updateWpm = this.updateWpm.bind(this);
+  }
+
+  updateWpm(updates) {
+    this.setState((state) => {
+      const updatedWpm = { ...state.wpm, ...updates };
+      if (updates.last && !updates.best) {
+        const { gross: currentBestGross, net: currentBestNet } = state.wpm.best;
+
+        const updatedBest = state.wpm.best;
+        if (updates.last.gross > currentBestGross) {
+          updatedBest.gross = updates.last.gross;
+        }
+        if (updates.last.net > currentBestNet) {
+          updatedBest.net = updates.last.net;
+        }
+        updatedWpm.best = updatedBest;
+      }
+      return { wpm: updatedWpm };
+    });
   }
 
   handleConfigChange(configUpdates) {
@@ -32,14 +56,20 @@ class Typer extends React.Component {
       <>
         <p>Typer</p>
         <div>
-          <TyperPanel config={this.state.config} />
+          <TyperPanel config={this.state.config} updateWpm={this.updateWpm} />
         </div>
+        <p></p>
         <div>
           <TyperConfig
             config={this.state.config}
             handleOnChange={this.handleConfigChange}
           />
         </div>
+        <p></p>
+        <div>Last GROSS WPM: {this.state.wpm.last.gross}</div>
+        <div>Best GROSS WPM: {this.state.wpm.best.gross}</div>
+        <div>Last NET WPM: {this.state.wpm.last.net}</div>
+        <div>Best NET WPM: {this.state.wpm.best.net}</div>
       </>
     );
   }
