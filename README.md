@@ -2,7 +2,11 @@
 
 ## Present
 
-- [ ] Measure typing speed
+- [x] Measure typing speed (gross WPM)
+- [x] Count keystrokes
+- [x] Skip special keys in count (Backpace, Shift...)
+- [ ] Count errors
+- [ ] Net WPM
 - [ ] CSS initial styling
 - [ ] Signal wrong char
 - [ ] Color part of text covered
