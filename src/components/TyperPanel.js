@@ -174,7 +174,9 @@ class TyperPanel extends React.Component {
             cols={40}
             onFocus={this.handleOnFocus}
             onBlur={this.handleOnBlur}
-            // onClick={() => this.selectCharAtIndex('textarea', 0)}
+            onClick={() =>
+              this.selectCharAtIndex('textarea', this.state.cursorIndex)
+            }
           />
         </div>
       </>
