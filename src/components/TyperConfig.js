@@ -26,7 +26,6 @@ function TyperConfig(props) {
   } = props.config;
   return (
     <>
-      <p>Config panel</p>
       <div>
         <input
           type="checkbox"
