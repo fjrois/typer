@@ -27,47 +27,47 @@ function TyperConfig(props) {
   return (
     <>
       <div>
+        <label htmlFor="lowercase">lowercase</label>
         <input
           type="checkbox"
           name="lowercase"
           value={lowercase}
           onChange={handleOnChange}
         />
-        <label htmlFor="lowercase">lowercase</label>
       </div>
       <div>
+        <label htmlFor="paragraphs">paragraphs</label>
         <input
           type="number"
           name="numberOfParagraphs"
           value={numberOfParagraphs}
           onChange={handleOnChange}
         />
-        <label htmlFor="paragraphs">paragraphs</label>
       </div>
       <div>
+        <label htmlFor="maxWords">maxWords</label>
         <input
           type="number"
           name="maxWords"
           value={maxWords}
           onChange={handleOnChange}
         />
-        <label htmlFor="maxWords">maxWords</label>
       </div>
       <div>
+        <label htmlFor="minWords">minWords</label>
         <input
           type="number"
           name="minWords"
           value={minWords}
           onChange={handleOnChange}
         />
-        <label htmlFor="minWords">minWords</label>
       </div>
       <div>
+        <label htmlFor="textType">textType</label>
         <select name="textType" value={textType} onChange={handleOnChange}>
           <option value="gibberish">Gibberish</option>
           <option value="lorem">Lorem</option>
         </select>
-        <label htmlFor="textType">textType</label>
       </div>
     </>
   );
