@@ -3,6 +3,7 @@
 ## Present
 
 - [ ] Measure typing speed
+- [ ] CSS initial styling
 - [ ] Signal wrong char
 - [ ] Color part of text covered
 - [ ] Apply configs immediately (at least lowercase). Recover functionality?
