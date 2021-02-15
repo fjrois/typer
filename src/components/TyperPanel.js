@@ -3,6 +3,8 @@ import React from 'react';
 import { capitalizeFirstLetter } from '../helpers';
 
 const initialText = 'next';
+let startTime = null;
+let realKeyStrokesCount = 0;
 
 class TyperPanel extends React.Component {
   textareaRef = React.createRef();
@@ -37,6 +39,27 @@ class TyperPanel extends React.Component {
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeydown);
     this.stopTimer();
+    this.resetTimer();
+  }
+
+  calculateResults() {
+    const { keyStrokesCount, text, timeFromStart: timeInSeconds } = this.state;
+    const timeInMinutes = timeInSeconds / 60;
+    const textLength = text.length;
+    const grossWordsPerMinute = keyStrokesCount / 5 / timeInMinutes;
+
+    this.props.updateWpm({ last: { gross: grossWordsPerMinute } });
+
+    console.log('');
+    console.log('SAMPLE RESULTS');
+    console.log('- timeInSeconds:', timeInSeconds);
+    console.log('- timeInMinutes:', timeInMinutes);
+    console.log('- textLength:', textLength);
+    console.log('- keyStrokesCount:', keyStrokesCount);
+    console.log('- realKeyStrokesCount:', realKeyStrokesCount);
+    console.log('- grossWordsPerMinute:', grossWordsPerMinute);
+    console.log('- text:', text);
+    console.log('');
   }
 
   async fetchRandomText() {
@@ -77,14 +100,31 @@ class TyperPanel extends React.Component {
   }
 
   handleKeydown(keyboardEvent) {
+    const pressedKey = keyboardEvent.key;
+    console.log('pressedKey:', pressedKey);
+
+    const keysNotToCount = [
+      'Alt',
+      'ArrowLeft',
+      'ArrowUp',
+      'ArrowRight',
+      'ArrowDown',
+      'Backspace',
+      'CapsLock',
+      'Control',
+      'Delete',
+      'Meta',
+      'Shift',
+      'Tab',
+    ];
+    if (keysNotToCount.includes(pressedKey)) return;
+
     if (this.state.cursorIndex === 0 && !this.state.timerId) {
       this.startTimer();
       this.resetKeyStrokesCount();
     }
 
-    const pressedKey = keyboardEvent.key;
-    console.log('pressedKey:', pressedKey);
-
+    realKeyStrokesCount++;
     this.setState((state) => {
       return {
         keyStrokesCount: state.keyStrokesCount + 1,
@@ -143,35 +183,12 @@ class TyperPanel extends React.Component {
     document.addEventListener('keydown', this.handleKeydown);
   }
 
-  calculateResults() {
-    const {
-      keyStrokesCount,
-      text,
-      timeFromStart: timeInMilliseconds,
-    } = this.state;
-    const timeInSeconds = timeInMilliseconds / 1000;
-    const timeInMinutes = timeInSeconds / 60;
-    const textLength = text.length;
-    const grossWordsPerMinute = timeInMinutes / 5 / keyStrokesCount;
-    console.log('');
-    console.log('SAMPLE RESULTS');
-    console.log('- timeInMilliseconds:', timeInMilliseconds);
-    console.log('- timeInSeconds:', timeInSeconds);
-    console.log('- timeInMinutes:', timeInMinutes);
-    console.log('- textLength:', textLength);
-    console.log('- keyStrokesCount:', keyStrokesCount);
-    console.log('- grossWordsPerMinute:', grossWordsPerMinute);
-    console.log('- text:', text);
-    console.log('');
-  }
-
   moveCursor() {
     console.log('Moving cursor...');
 
     // Sample finished
     if (this.state.cursorIndex + 1 >= this.state.textareaValue.length) {
-      this.stopTimer();
-      this.calculateResults();
+      this.stopTimer({ sampleFinished: true });
     }
 
     this.setState(
@@ -195,10 +212,6 @@ class TyperPanel extends React.Component {
     );
   }
 
-  resetKeyStrokesCount() {
-    this.setState({ keyStrokesCount: 0 });
-  }
-
   async regenerateText() {
     const generatedText = await this.fetchRandomText();
     console.log('generatedText:', generatedText);
@@ -207,31 +220,52 @@ class TyperPanel extends React.Component {
     this.setState({ text, textareaValue: text });
   }
 
+  resetKeyStrokesCount() {
+    realKeyStrokesCount = 0;
+    this.setState({ keyStrokesCount: 0 });
+  }
+
+  resetTimer() {
+    startTime = null;
+    this.setState({ timeFromStart: 0 });
+    this.stopTimer();
+  }
+
   selectCharAtIndex(name, index) {
     const element = this[`${name}Ref`].current;
     element.setSelectionRange(index, index + 1);
   }
 
   startTimer() {
+    startTime = Date.now();
     if (this.state.timerId) {
       clearInterval(this.state.timerId);
     }
     this.setState({ timeFromStart: 0 }, () => {
-      const intervalId = setInterval(() => this.tickTimer(), 1);
+      const intervalId = setInterval(() => this.tickTimer(), 1000);
       this.setState({ timerId: intervalId });
     });
   }
 
-  stopTimer() {
+  stopTimer(sampleFinished) {
+    const realTimeElapsedInMilliseconds = Date.now() - startTime;
+    const realTimeElapsedInSeconds = realTimeElapsedInMilliseconds / 1000;
+    console.log('realTimeElapsedInSeconds:', realTimeElapsedInSeconds);
     if (this.state.timerId) {
       clearInterval(this.state.timerId);
-      this.setState({ timerId: null });
+      this.setState(
+        {
+          keyStrokesCount: realKeyStrokesCount,
+          timeFromStart: realTimeElapsedInSeconds,
+          timerId: null,
+        },
+        () => {
+          if (sampleFinished) {
+            this.calculateResults();
+          }
+        }
+      );
     }
-  }
-
-  resetTimer() {
-    this.setState({ timeFromStart: 0 });
-    this.stopTimer();
   }
 
   tickTimer() {
@@ -243,8 +277,10 @@ class TyperPanel extends React.Component {
   render() {
     return (
       <>
-        <div>{this.state.timeFromStart}</div>
-        <div>{this.state.keyStrokesCount}</div>
+        <div>
+          time: {this.state.timeFromStart} | strokes:{' '}
+          {this.state.keyStrokesCount} | errors:{' '}
+        </div>
         <div>
           <textarea
             ref={this.textareaRef}
@@ -276,6 +312,7 @@ class TyperPanel extends React.Component {
 
 TyperPanel.propTypes = {
   config: PropTypes.object.isRequired,
+  updateWpm: PropTypes.func.isRequired,
 };
 
 export default TyperPanel;
