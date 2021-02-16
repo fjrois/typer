@@ -31,6 +31,9 @@
 
 - [ ] Adds?
 - [ ] SEO?
+- [ ] Keyboard layouts
+- [ ] Sounds
+- [ ] Achievements
 
 # Getting Started with Create React App
 
