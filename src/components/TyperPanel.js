@@ -34,6 +34,7 @@ class TyperPanel extends React.Component {
     this.handleOnBlur = this.handleOnBlur.bind(this);
     this.moveCursor = this.moveCursor.bind(this);
     this.resetKeyStrokesCount = this.resetKeyStrokesCount.bind(this);
+    this.restartSample = this.restartSample.bind(this);
     this.selectCharAtIndex = this.selectCharAtIndex.bind(this);
 
     this.startTimer = this.startTimer.bind(this);
@@ -125,6 +126,21 @@ class TyperPanel extends React.Component {
     const pressedKey = keyboardEvent.key;
     console.log('pressedKey:', pressedKey);
 
+    // Restart sample with Escape
+    if (pressedKey === 'Escape') {
+      this.restartSample();
+      return;
+    }
+
+    // Consider backspace in word errors tracking
+    if (pressedKey === 'Backspace') {
+      currentWordTyped = currentWordTyped.substring(
+        0,
+        currentWordTyped.length - 1
+      );
+      console.log('currentWordTyped:', currentWordTyped);
+    }
+
     const keysNotToCount = [
       'Alt',
       'ArrowLeft',
@@ -139,15 +155,6 @@ class TyperPanel extends React.Component {
       'Shift',
       'Tab',
     ];
-
-    // Consider backspace in word errors tracking
-    if (pressedKey === 'Backspace') {
-      currentWordTyped = currentWordTyped.substring(
-        0,
-        currentWordTyped.length - 1
-      );
-      console.log('currentWordTyped:', currentWordTyped);
-    }
 
     // Skip special keys
     if (keysNotToCount.includes(pressedKey)) return;
@@ -192,6 +199,17 @@ class TyperPanel extends React.Component {
       // Move cursor if right char typed
       this.moveCursor();
     }
+  }
+
+  restartSample() {
+    this.resetKeyStrokesCount();
+    this.resetErrorsCount();
+    this.resetWordTyped();
+    this.selectCharAtIndex('textarea', 0);
+    this.setState({
+      cursorIndex: 0,
+    });
+    this.stopTimer();
   }
 
   handleOnBlur(event) {
@@ -295,6 +313,11 @@ class TyperPanel extends React.Component {
     startTime = null;
     this.setState({ timeFromStart: 0 });
     this.stopTimer();
+  }
+
+  resetWordTyped() {
+    currentWordIndex = 0;
+    currentWordTyped = '';
   }
 
   selectCharAtIndex(name, index) {
