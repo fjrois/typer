@@ -1,6 +1,7 @@
+import React from 'react';
 import TyperConfig from './TyperConfig';
 import TyperPanel from './TyperPanel';
-import React from 'react';
+import { formatDecimalNumber } from '../helpers';
 
 class Typer extends React.Component {
   constructor(props) {
@@ -52,6 +53,8 @@ class Typer extends React.Component {
   }
 
   render() {
+    const { last: lastWpm, best: bestWpm } = this.state.wpm;
+
     return (
       <>
         <p>Typer</p>
@@ -66,11 +69,17 @@ class Typer extends React.Component {
           />
         </div>
         <p></p>
-        <div>Last GROSS WPM: {this.state.wpm.last.gross}</div>
-        <div>Last NET WPM: {this.state.wpm.last.net}</div>
+        <div>Last GROSS WPM: {formatDecimalNumber(lastWpm.gross)}</div>
+        <div>Last NET WPM: {formatDecimalNumber(lastWpm.net)}</div>
+        <div>
+          Accuracy (GWPM/NWPM):{' '}
+          {lastWpm.net && lastWpm.gross
+            ? formatDecimalNumber((lastWpm.net / lastWpm.gross) * 100) + '%'
+            : ''}
+        </div>
         <p></p>
-        <div>Best GROSS WPM: {this.state.wpm.best.gross}</div>
-        <div>Best NET WPM: {this.state.wpm.best.net}</div>
+        <div>Best GROSS WPM: {formatDecimalNumber(bestWpm.gross)}</div>
+        <div>Best NET WPM: {formatDecimalNumber(bestWpm.net)}</div>
       </>
     );
   }
