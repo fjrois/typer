@@ -29,11 +29,14 @@
 
 ## Future
 
-- [ ] Adds?
+- [ ] Ads?
 - [ ] SEO?
 - [ ] Keyboard layouts
 - [ ] Sounds
 - [ ] Achievements
+- [ ] Export user data
+- [ ] Reset user data
+- [ ] Import other platforms data
 
 # Getting Started with Create React App
 
