@@ -6,6 +6,10 @@ const initialText = 'next';
 let startTime = null;
 let realKeyStrokesCount = 0;
 
+let currentWordIndex = 0;
+let currentWordTyped = '';
+let wordsWithUncorrectedErrors = 0;
+
 class TyperPanel extends React.Component {
   textareaRef = React.createRef();
 
@@ -20,6 +24,8 @@ class TyperPanel extends React.Component {
       textareaValue: '',
       timeFromStart: 0,
       timerId: null,
+
+      textWords: initialText.split(' '),
     };
 
     this.handleKeydown = this.handleKeydown.bind(this);
@@ -43,22 +49,38 @@ class TyperPanel extends React.Component {
   }
 
   calculateResults() {
-    const { keyStrokesCount, text, timeFromStart: timeInSeconds } = this.state;
+    const {
+      keyStrokesCount,
+      text,
+      textWords,
+      timeFromStart: timeInSeconds,
+    } = this.state;
     const timeInMinutes = timeInSeconds / 60;
     const textLength = text.length;
+
+    // Calculate WPMs
     const grossWordsPerMinute = keyStrokesCount / 5 / timeInMinutes;
+    const netWordsPerMinute =
+      (keyStrokesCount / 5 - wordsWithUncorrectedErrors) / timeInMinutes;
 
-    this.props.updateWpm({ last: { gross: grossWordsPerMinute } });
+    // Update Word Per Minute in higher level component
+    this.props.updateWpm({
+      last: { gross: grossWordsPerMinute, net: netWordsPerMinute },
+    });
 
+    // Print results summary
     console.log('');
     console.log('SAMPLE RESULTS');
     console.log('- timeInSeconds:', timeInSeconds);
     console.log('- timeInMinutes:', timeInMinutes);
     console.log('- textLength:', textLength);
     console.log('- keyStrokesCount:', keyStrokesCount);
+    console.log('- wordsWithUncorrectedErrors:', wordsWithUncorrectedErrors);
     console.log('- realKeyStrokesCount:', realKeyStrokesCount);
     console.log('- grossWordsPerMinute:', grossWordsPerMinute);
+    console.log('- netWordsPerMinute:', netWordsPerMinute);
     console.log('- text:', text);
+    console.log('- textWords:', textWords);
     console.log('');
   }
 
@@ -117,11 +139,23 @@ class TyperPanel extends React.Component {
       'Shift',
       'Tab',
     ];
+
+    // Consider backspace in word errors tracking
+    if (pressedKey === 'Backspace') {
+      currentWordTyped = currentWordTyped.substring(
+        0,
+        currentWordTyped.length - 1
+      );
+      console.log('currentWordTyped:', currentWordTyped);
+    }
+
+    // Skip special keys
     if (keysNotToCount.includes(pressedKey)) return;
 
     if (this.state.cursorIndex === 0 && !this.state.timerId) {
       this.startTimer();
       this.resetKeyStrokesCount();
+      this.resetErrorsCount();
     }
 
     realKeyStrokesCount++;
@@ -132,8 +166,30 @@ class TyperPanel extends React.Component {
     });
 
     const selectedChar = this.state.textareaValue[this.state.cursorIndex];
-    console.log('selectedChar:', selectedChar);
+    // console.log('selectedChar:', selectedChar);
+
+    // Keep track of current word typed, to spot word errors
+    currentWordTyped += pressedKey;
+    console.log('currentWordTyped:', currentWordTyped);
+
     if (pressedKey === selectedChar) {
+      // Start tracking new word for errors
+      const isSampleEnd =
+        this.state.cursorIndex + 1 >= this.state.textareaValue.length;
+      if (pressedKey === ' ' || isSampleEnd) {
+        // Count error if any
+        const targetWord = this.state.textWords[currentWordIndex];
+        console.log('targetWord:', targetWord);
+        if (currentWordTyped.trim() !== targetWord) {
+          wordsWithUncorrectedErrors++;
+        }
+
+        // Continue to next word
+        currentWordIndex++;
+        currentWordTyped = '';
+      }
+
+      // Move cursor if right char typed
       this.moveCursor();
     }
   }
@@ -175,6 +231,7 @@ class TyperPanel extends React.Component {
       },
       () => {
         this.resetKeyStrokesCount();
+        this.resetErrorsCount();
         this.selectCharAtIndex(targetName, this.state.cursorIndex);
       }
     );
@@ -204,6 +261,10 @@ class TyperPanel extends React.Component {
       async () => {
         const cursorIndex = this.state.cursorIndex;
         if (cursorIndex === 0) {
+          // Start tracking new word for errors
+          currentWordTyped = '';
+          currentWordIndex = 0;
+
           await this.regenerateText();
           // this.resetKeyStrokesCount();
         }
@@ -217,7 +278,12 @@ class TyperPanel extends React.Component {
     console.log('generatedText:', generatedText);
 
     const text = generatedText || initialText;
-    this.setState({ text, textareaValue: text });
+    const textWords = text.split(' ');
+    this.setState({ text, textareaValue: text, textWords });
+  }
+
+  resetErrorsCount() {
+    wordsWithUncorrectedErrors = 0;
   }
 
   resetKeyStrokesCount() {
@@ -279,7 +345,7 @@ class TyperPanel extends React.Component {
       <>
         <div>
           time: {this.state.timeFromStart} | strokes:{' '}
-          {this.state.keyStrokesCount} | errors:{' '}
+          {this.state.keyStrokesCount} | errors:{wordsWithUncorrectedErrors}
         </div>
         <div>
           <textarea
