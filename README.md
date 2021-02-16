@@ -7,18 +7,18 @@
 - [x] Skip special keys in count (Backpace, Shift...)
 - [x] Count errors
 - [x] Net WPM
-- [ ] Accuracy
-- [ ] CSS initial styling
-- [ ] Signal wrong char
+- [x] Accuracy
+- [ ] ESC to restart text
 - [ ] Color part of text covered
+- [ ] Signal wrong char
+- [ ] Next button
+- [ ] CSS initial styling
 - [ ] Apply configs immediately (at least lowercase). Recover functionality?
 - [ ] Blinking cursor
 - [ ] Code instead of plain text
-- [ ] Next button
 - [ ] Login
 - [ ] Data recording
 - [ ] Simple statistics
-- [ ] ESC to restart text
 - [ ] Shortcut for next text?
 
 ## Future
