@@ -8,7 +8,7 @@
 - [x] Count errors
 - [x] Net WPM
 - [x] Accuracy
-- [ ] ESC to restart text
+- [x] ESC to restart text
 - [ ] Color part of text covered
 - [ ] Signal wrong char
 - [ ] Next button
@@ -20,6 +20,12 @@
 - [ ] Data recording
 - [ ] Simple statistics
 - [ ] Shortcut for next text?
+- [ ] Open board comments and interaction
+- [ ] High Scores
+
+## Bugs
+
+- [ ] Enter for multiple paragraphs
 
 ## Future
 
