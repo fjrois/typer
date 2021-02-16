@@ -354,7 +354,7 @@ class TyperPanel extends React.Component {
             value={this.state.textareaValue}
             onChange={this.handleOnChange}
             autoFocus
-            // readOnly
+            readOnly
             placeholder={initialText}
             rows={10}
             cols={40}
