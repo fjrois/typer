@@ -5,8 +5,9 @@
 - [x] Measure typing speed (gross WPM)
 - [x] Count keystrokes
 - [x] Skip special keys in count (Backpace, Shift...)
-- [ ] Count errors
-- [ ] Net WPM
+- [x] Count errors
+- [x] Net WPM
+- [ ] Accuracy
 - [ ] CSS initial styling
 - [ ] Signal wrong char
 - [ ] Color part of text covered
