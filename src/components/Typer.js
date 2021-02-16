@@ -67,8 +67,9 @@ class Typer extends React.Component {
         </div>
         <p></p>
         <div>Last GROSS WPM: {this.state.wpm.last.gross}</div>
-        <div>Best GROSS WPM: {this.state.wpm.best.gross}</div>
         <div>Last NET WPM: {this.state.wpm.last.net}</div>
+        <p></p>
+        <div>Best GROSS WPM: {this.state.wpm.best.gross}</div>
         <div>Best NET WPM: {this.state.wpm.best.net}</div>
       </>
     );
