@@ -347,7 +347,7 @@ class TyperPanel extends React.Component {
           time: {this.state.timeFromStart} | strokes:{' '}
           {this.state.keyStrokesCount} | errors:{wordsWithUncorrectedErrors}
         </div>
-        <div>
+        <div contentEditable={true}>
           <textarea
             ref={this.textareaRef}
             name="textarea"
