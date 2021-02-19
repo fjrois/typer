@@ -11,7 +11,7 @@
 - [x] ESC to restart text
 - [ ] Color part of text covered
 - [ ] Signal wrong char
-- [ ] Next button
+- [x] Next button
 - [ ] CSS initial styling
 - [ ] Apply configs immediately (at least lowercase). Recover functionality?
 - [ ] Blinking cursor
@@ -37,6 +37,8 @@
 - [ ] Export user data
 - [ ] Reset user data
 - [ ] Import other platforms data
+- [ ] Previous button
+- [ ] Repeat button
 
 # Getting Started with Create React App
 
