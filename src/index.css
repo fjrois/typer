@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.typer-config-panel {
+  /* background-color: brown; */
+  max-width: 50%;
+  margin: auto;
+}
+
+.typer-panel textarea {
+  width: 75%;
+  height: 200px;
+  margin: 12px 0px 2px 0px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
