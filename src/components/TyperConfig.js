@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 function TyperConfig(props) {
   const handleOnChange = (event) => {
     const target = event.target;
-    console.log('target:', target);
-    const name = target.name;
-    console.log('name:', name);
 
     let value = target.type === 'checkbox' ? target.checked : target.value;
     if (target.type === 'number') {
@@ -14,7 +11,7 @@ function TyperConfig(props) {
     }
     console.log('value:', value);
 
-    props.handleOnChange({ [name]: value });
+    props.handleOnChange({ [target.name]: value });
   };
 
   const {
@@ -26,48 +23,50 @@ function TyperConfig(props) {
   } = props.config;
   return (
     <>
-      <div>
-        <label htmlFor="lowercase">lowercase</label>
-        <input
-          type="checkbox"
-          name="lowercase"
-          value={lowercase}
-          onChange={handleOnChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="paragraphs">paragraphs</label>
-        <input
-          type="number"
-          name="numberOfParagraphs"
-          value={numberOfParagraphs}
-          onChange={handleOnChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="maxWords">maxWords</label>
-        <input
-          type="number"
-          name="maxWords"
-          value={maxWords}
-          onChange={handleOnChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="minWords">minWords</label>
-        <input
-          type="number"
-          name="minWords"
-          value={minWords}
-          onChange={handleOnChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="textType">textType</label>
-        <select name="textType" value={textType} onChange={handleOnChange}>
-          <option value="gibberish">Gibberish</option>
-          <option value="lorem">Lorem</option>
-        </select>
+      <div className="typer-config-panel">
+        <div>
+          <label htmlFor="lowercase">lowercase</label>
+          <input
+            type="checkbox"
+            name="lowercase"
+            value={lowercase}
+            onChange={handleOnChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="paragraphs">paragraphs</label>
+          <input
+            type="number"
+            name="numberOfParagraphs"
+            value={numberOfParagraphs}
+            onChange={handleOnChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="maxWords">maxWords</label>
+          <input
+            type="number"
+            name="maxWords"
+            value={maxWords}
+            onChange={handleOnChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="minWords">minWords</label>
+          <input
+            type="number"
+            name="minWords"
+            value={minWords}
+            onChange={handleOnChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="textType">textType</label>
+          <select name="textType" value={textType} onChange={handleOnChange}>
+            <option value="gibberish">Gibberish</option>
+            <option value="lorem">Lorem</option>
+          </select>
+        </div>
       </div>
     </>
   );
