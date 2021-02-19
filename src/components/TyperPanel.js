@@ -366,27 +366,30 @@ class TyperPanel extends React.Component {
   render() {
     return (
       <>
-        <div>
-          time: {this.state.timeFromStart} | strokes:{' '}
-          {this.state.keyStrokesCount} | errors:{wordsWithUncorrectedErrors}
-        </div>
-        <div>
-          <textarea
-            ref={this.textareaRef}
-            name="textarea"
-            value={this.state.textareaValue}
-            onChange={this.handleOnChange}
-            autoFocus
-            readOnly
-            placeholder={initialText}
-            rows={10}
-            cols={40}
-            onFocus={this.handleOnFocus}
-            onBlur={this.handleOnBlur}
-            onClick={() =>
-              this.selectCharAtIndex('textarea', this.state.cursorIndex)
-            }
-          />
+        <div className="typer-panel">
+          <div>
+            time: {this.state.timeFromStart} | strokes:{' '}
+            {this.state.keyStrokesCount} | errors:{wordsWithUncorrectedErrors}
+          </div>
+          <div>
+            <textarea
+              ref={this.textareaRef}
+              name="textarea"
+              value={this.state.textareaValue}
+              onChange={this.handleOnChange}
+              autoFocus
+              readOnly
+              placeholder={initialText}
+              rows={10}
+              cols={40}
+              onFocus={this.handleOnFocus}
+              onBlur={this.handleOnBlur}
+              onClick={() =>
+                this.selectCharAtIndex('textarea', this.state.cursorIndex)
+              }
+            />
+          </div>
+          <button onClick={() => this.regenerateText()}>Next &#62;&#62;</button>
         </div>
       </>
     );
