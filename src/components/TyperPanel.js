@@ -388,12 +388,6 @@ class TyperPanel extends React.Component {
             }
           />
         </div>
-        <div>
-          <p></p>
-          <button onClick={this.startTimer}>Start Timer</button>
-          <button onClick={this.stopTimer}>Stop Timer</button>
-          <button onClick={this.resetTimer}>Reset Timer</button>
-        </div>
       </>
     );
   }
