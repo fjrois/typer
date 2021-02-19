@@ -57,7 +57,7 @@ class Typer extends React.Component {
 
     return (
       <>
-        <p>Typer</p>
+        <h2>&#62;Typer&#60;</h2>
         <div>
           <TyperPanel config={this.state.config} updateWpm={this.updateWpm} />
         </div>
