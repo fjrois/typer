@@ -23,6 +23,7 @@
 - [ ] Open board comments and interaction
 - [ ] High Scores
 - [ ] Preload next text for better performance
+- [ ] Make it desktop app? Explore Electron
 
 ## Bugs
 
