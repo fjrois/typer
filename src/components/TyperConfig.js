@@ -24,49 +24,104 @@ function TyperConfig(props) {
   return (
     <>
       <div className="typer-config-panel">
-        <div>
-          <label htmlFor="lowercase">lowercase</label>
-          <input
-            type="checkbox"
-            name="lowercase"
-            value={lowercase}
-            onChange={handleOnChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="paragraphs">paragraphs</label>
-          <input
-            type="number"
-            name="numberOfParagraphs"
-            value={numberOfParagraphs}
-            onChange={handleOnChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="maxWords">maxWords</label>
-          <input
-            type="number"
-            name="maxWords"
-            value={maxWords}
-            onChange={handleOnChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="minWords">minWords</label>
-          <input
-            type="number"
-            name="minWords"
-            value={minWords}
-            onChange={handleOnChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="textType">textType</label>
-          <select name="textType" value={textType} onChange={handleOnChange}>
-            <option value="gibberish">Gibberish</option>
-            <option value="lorem">Lorem</option>
-          </select>
-        </div>
+        <form>
+          <fieldset>
+            <legend>Configuration</legend>
+
+            <label htmlFor="lowercase">lowercase</label>
+            <input
+              type="checkbox"
+              name="lowercase"
+              value={lowercase}
+              onChange={handleOnChange}
+            />
+            <br />
+            <label htmlFor="paragraphs">paragraphs</label>
+            <input
+              type="range"
+              name="numberOfParagraphs"
+              value={numberOfParagraphs}
+              onChange={handleOnChange}
+              min="1"
+              max="20"
+            />
+            <input
+              type="number"
+              name="numberOfParagraphs"
+              value={numberOfParagraphs}
+              onChange={handleOnChange}
+              min="1"
+              max="20"
+            />
+            <br />
+
+            {/* <label htmlFor="maxWords">maxWords</label>
+            <input
+              type="number"
+              name="maxWords"
+              value={maxWords}
+              onChange={handleOnChange}
+            />
+            <br /> */}
+
+            <label htmlFor="maxWords">maxWords</label>
+            <input
+              type="range"
+              name="maxWords"
+              value={maxWords}
+              onChange={handleOnChange}
+              min="1"
+              max="99"
+            />
+            <input
+              type="number"
+              name="maxWords"
+              value={maxWords}
+              onChange={handleOnChange}
+              min="1"
+              max="99"
+            />
+            <br />
+
+            {/* <label htmlFor="minWords">minWords</label>
+            <input
+              type="number"
+              name="minWords"
+              value={minWords}
+              onChange={handleOnChange}
+            />
+            <br /> */}
+
+            <label htmlFor="minWords">minWords</label>
+            <input
+              type="range"
+              name="minWords"
+              value={minWords}
+              onChange={handleOnChange}
+              min="1"
+              max="99"
+            />
+            <input
+              type="number"
+              name="minWords"
+              value={minWords}
+              onChange={handleOnChange}
+              min="1"
+              max="99"
+            />
+            <br />
+
+            <label htmlFor="textType">textType</label>
+            <select name="textType" value={textType} onChange={handleOnChange}>
+              <option value="gibberish">Gibberish</option>
+              <option value="lorem">Lorem</option>
+            </select>
+            <br />
+            <br />
+
+            <button type="submit">Apply</button>
+          </fieldset>
+        </form>
       </div>
     </>
   );
