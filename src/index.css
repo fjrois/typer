@@ -14,18 +14,59 @@ code {
 
 .typer-config-panel {
   /* background-color: brown; */
-  max-width: 50%;
+  max-width: 40%;
   margin: auto;
+}
+.typer-config-panel legend {
+  color: black;
+  padding: 3px 6px;
+}
+
+.typer-config-panel input,
+textarea {
+  /* width: 25px; */
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.typer-config-panel button {
+  padding: 5px;
+  font: bold 0.6em sans-serif;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background: none;
+  cursor: pointer;
+  transform: rotate(-1.5deg);
+}
+
+.typer-config-panel button:after {
+  content: ' >>>';
+}
+
+.typer-config-panel button:hover,
+.typer-config-panel button:focus {
+  outline: none;
+  background: #000;
+  color: #fff;
+}
+
+.typer-config-panel input:focus,
+textarea:focus {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
 }
 
 .typer-panel textarea {
-  width: 75%;
-  height: 200px;
+  width: 60%;
+  height: 240px;
   margin: 12px 0px 2px 0px;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #ccc;
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: #f8f8f8;
   resize: none;
+  outline: none;
+  overflow: auto;
 }
