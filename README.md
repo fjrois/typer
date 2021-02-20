@@ -22,6 +22,7 @@
 - [ ] Shortcut for next text?
 - [ ] Open board comments and interaction
 - [ ] High Scores
+- [ ] Preload next text for better performance
 
 ## Bugs
 
