@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: rgb(255, 243, 226); */
 }
 
 code {
@@ -15,6 +16,10 @@ code {
 h1,
 h2 {
   font-family: monospace;
+}
+
+p {
+  font-size: medium;
 }
 
 .config {
@@ -99,6 +104,25 @@ h2 {
   color: black;
   padding: 3px 6px;
   font-weight: bold;
+}
+
+.footer {
+  background-color: #ccc;
+  margin: 20px 0px 0px 0px;
+  padding: 5px;
+}
+
+.footer-text,
+.footer-text a {
+  font-size: x-small;
+  text-align: left;
+  color: white;
+}
+
+.header-logo {
+  /* width: 50px; */
+  margin: 0px 2px 0px 2px;
+  max-width: 35px;
 }
 
 .panel textarea {
