@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function TyperConfig(props) {
+function Config(props) {
   const handleOnChange = (event) => {
     const target = event.target;
 
@@ -136,7 +136,7 @@ function TyperConfig(props) {
   );
 }
 
-TyperConfig.propTypes = {
+Config.propTypes = {
   config: PropTypes.shape({
     lowercase: PropTypes.bool.isRequired,
     numberOfParagraphs: PropTypes.number.isRequired,
@@ -147,4 +147,4 @@ TyperConfig.propTypes = {
   handleOnChange: PropTypes.func.isRequired,
 };
 
-export default TyperConfig;
+export default Config;

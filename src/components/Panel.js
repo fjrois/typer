@@ -10,7 +10,7 @@ let currentWordIndex = 0;
 let currentWordTyped = '';
 let wordsWithUncorrectedErrors = 0;
 
-class TyperPanel extends React.Component {
+class Panel extends React.Component {
   textareaRef = React.createRef();
 
   constructor(props) {
@@ -396,9 +396,9 @@ class TyperPanel extends React.Component {
   }
 }
 
-TyperPanel.propTypes = {
+Panel.propTypes = {
   config: PropTypes.object.isRequired,
   updateWpm: PropTypes.func.isRequired,
 };
 
-export default TyperPanel;
+export default Panel;
