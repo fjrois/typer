@@ -27,32 +27,37 @@ function TyperConfig(props) {
         <form>
           <fieldset>
             <legend>Configuration</legend>
-
-            <label htmlFor="lowercase">lowercase</label>
-            <input
-              type="checkbox"
-              name="lowercase"
-              value={lowercase}
-              onChange={handleOnChange}
-            />
+            <div className="config-row">
+              <label htmlFor="lowercase">lowercase</label>
+              <input
+                type="checkbox"
+                name="lowercase"
+                value={lowercase}
+                onChange={handleOnChange}
+              />
+            </div>
             <br />
-            <label htmlFor="paragraphs">paragraphs</label>
-            <input
-              type="range"
-              name="numberOfParagraphs"
-              value={numberOfParagraphs}
-              onChange={handleOnChange}
-              min="1"
-              max="20"
-            />
-            <input
-              type="number"
-              name="numberOfParagraphs"
-              value={numberOfParagraphs}
-              onChange={handleOnChange}
-              min="1"
-              max="20"
-            />
+
+            <div className="config-row">
+              <label htmlFor="paragraphs">paragraphs</label>
+              <input
+                type="range"
+                name="numberOfParagraphs"
+                value={numberOfParagraphs}
+                onChange={handleOnChange}
+                min="1"
+                max="20"
+              />
+              <input
+                type="number"
+                name="numberOfParagraphs"
+                value={numberOfParagraphs}
+                onChange={handleOnChange}
+                min="1"
+                max="20"
+                disabled
+              />
+            </div>
             <br />
 
             {/* <label htmlFor="maxWords">maxWords</label>
@@ -63,24 +68,26 @@ function TyperConfig(props) {
               onChange={handleOnChange}
             />
             <br /> */}
-
-            <label htmlFor="maxWords">maxWords</label>
-            <input
-              type="range"
-              name="maxWords"
-              value={maxWords}
-              onChange={handleOnChange}
-              min="1"
-              max="99"
-            />
-            <input
-              type="number"
-              name="maxWords"
-              value={maxWords}
-              onChange={handleOnChange}
-              min="1"
-              max="99"
-            />
+            <div className="config-row">
+              <label htmlFor="maxWords">maxWords</label>
+              <input
+                type="range"
+                name="maxWords"
+                value={maxWords}
+                onChange={handleOnChange}
+                min="1"
+                max="99"
+              />
+              <input
+                type="number"
+                name="maxWords"
+                value={maxWords}
+                onChange={handleOnChange}
+                min="1"
+                max="99"
+                disabled
+              />
+            </div>
             <br />
 
             {/* <label htmlFor="minWords">minWords</label>
@@ -91,24 +98,26 @@ function TyperConfig(props) {
               onChange={handleOnChange}
             />
             <br /> */}
-
-            <label htmlFor="minWords">minWords</label>
-            <input
-              type="range"
-              name="minWords"
-              value={minWords}
-              onChange={handleOnChange}
-              min="1"
-              max="99"
-            />
-            <input
-              type="number"
-              name="minWords"
-              value={minWords}
-              onChange={handleOnChange}
-              min="1"
-              max="99"
-            />
+            <div className="config-row">
+              <label htmlFor="minWords">minWords</label>
+              <input
+                type="range"
+                name="minWords"
+                value={minWords}
+                onChange={handleOnChange}
+                min="1"
+                max="99"
+              />
+              <input
+                type="number"
+                name="minWords"
+                value={minWords}
+                onChange={handleOnChange}
+                min="1"
+                max="99"
+                disabled
+              />
+            </div>
             <br />
 
             <label htmlFor="textType">textType</label>
