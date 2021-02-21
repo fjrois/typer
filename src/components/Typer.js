@@ -1,7 +1,8 @@
+import Config from './Config';
+import Header from './Header';
+import Panel from './Panel';
 import React from 'react';
-import TyperConfig from './Config';
-import TyperPanel from './Panel';
-import { formatDecimalNumber } from '../helpers';
+import ScoresPanel from './ScoresPanel';
 
 class Typer extends React.Component {
   constructor(props) {
@@ -25,6 +26,14 @@ class Typer extends React.Component {
     this.updateWpm = this.updateWpm.bind(this);
   }
 
+  handleConfigChange(configUpdates) {
+    console.log('configUpdates:', configUpdates);
+    this.setState((state) => {
+      const config = { ...state.config, ...configUpdates };
+      return { config };
+    });
+  }
+
   updateWpm(updates) {
     this.setState((state) => {
       const updatedWpm = { ...state.wpm, ...updates };
@@ -44,42 +53,22 @@ class Typer extends React.Component {
     });
   }
 
-  handleConfigChange(configUpdates) {
-    console.log('configUpdates:', configUpdates);
-    this.setState((state) => {
-      const config = { ...state.config, ...configUpdates };
-      return { config };
-    });
-  }
-
   render() {
-    const { last: lastWpm, best: bestWpm } = this.state.wpm;
+    // const { last: lastWpm, best: bestWpm } = this.state.wpm;
 
     return (
       <>
-        <h2>&#62;Typer&#60;</h2>
+        <Header />
         <div>
-          <TyperPanel config={this.state.config} updateWpm={this.updateWpm} />
+          <ScoresPanel wpm={this.state.wpm} />
         </div>
-        <p></p>
-        <div>
-          <TyperConfig
-            config={this.state.config}
-            handleOnChange={this.handleConfigChange}
-          />
-        </div>
-        <p></p>
-        <div>Last GROSS WPM: {formatDecimalNumber(lastWpm.gross)}</div>
-        <div>Last NET WPM: {formatDecimalNumber(lastWpm.net)}</div>
-        <div>
-          Accuracy (GWPM/NWPM):{' '}
-          {lastWpm.net && lastWpm.gross
-            ? formatDecimalNumber((lastWpm.net / lastWpm.gross) * 100) + '%'
-            : ''}
-        </div>
-        <p></p>
-        <div>Best GROSS WPM: {formatDecimalNumber(bestWpm.gross)}</div>
-        <div>Best NET WPM: {formatDecimalNumber(bestWpm.net)}</div>
+        <Panel config={this.state.config} updateWpm={this.updateWpm} />
+        <br />
+        <Config
+          config={this.state.config}
+          handleOnChange={this.handleConfigChange}
+        />
+        <br />
       </>
     );
   }
