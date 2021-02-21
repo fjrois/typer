@@ -12,6 +12,7 @@
 - [ ] Color part of text covered
 - [ ] Signal wrong char
 - [x] Next button
+- [ ] Initial score component
 - [ ] CSS initial styling
 - [ ] Apply configs immediately (at least lowercase). Recover functionality?
 - [ ] Blinking cursor
@@ -25,9 +26,11 @@
 - [ ] Preload next text for better performance
 - [ ] Make it desktop app? Explore Electron
 
-## Bugs
+## Bugs/Improvements
 
 - [ ] Enter for multiple paragraphs
+- [ ] Focus panel when click next
+- [ ] Text back to grey on blur
 
 ## Future
 
