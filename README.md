@@ -25,6 +25,13 @@
 - [ ] High Scores
 - [ ] Preload next text for better performance
 - [ ] Make it desktop app? Explore Electron
+- [ ] Add animations/transitions
+  - https://reactcommunity.org/react-transition-group/
+  - https://github.com/chenglou/react-motion
+  - https://github.com/react-spring/react-spring
+- [ ] Measure total all time typing
+- [ ] Customizable theme colors
+- [ ] Customizable font
 
 ## Bugs/Improvements
 
