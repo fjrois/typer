@@ -1,6 +1,8 @@
 import Config from './Config';
+import Footer from './Footer';
 import Header from './Header';
 import Panel from './Panel';
+// import Panel2 from './Panel2';
 import React from 'react';
 import ScoresPanel from './ScoresPanel';
 
@@ -63,12 +65,15 @@ class Typer extends React.Component {
           <ScoresPanel wpm={this.state.wpm} />
         </div>
         <Panel config={this.state.config} updateWpm={this.updateWpm} />
+        {/* <br />
+        <Panel2 config={this.state.config} updateWpm={this.updateWpm} /> */}
         <br />
         <Config
           config={this.state.config}
           handleOnChange={this.handleConfigChange}
         />
         <br />
+        <Footer />
       </>
     );
   }
