@@ -366,7 +366,7 @@ class TyperPanel extends React.Component {
   render() {
     return (
       <>
-        <div className="typer-panel">
+        <div className="panel">
           <div>
             time: {this.state.timeFromStart} | strokes:{' '}
             {this.state.keyStrokesCount} | errors:{wordsWithUncorrectedErrors}

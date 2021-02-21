@@ -23,7 +23,7 @@ function TyperConfig(props) {
   } = props.config;
   return (
     <>
-      <div className="typer-config-panel">
+      <div className="config">
         <form>
           <fieldset>
             <legend>Configuration</legend>

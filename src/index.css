@@ -12,52 +12,55 @@ code {
     monospace;
 }
 
-.typer-config-panel {
+.config {
   /* background-color: brown; */
   max-width: 40%;
   margin: auto;
 }
-.typer-config-panel legend {
+.config legend {
   color: black;
   padding: 3px 6px;
 }
 
-.typer-config-panel input,
-textarea {
+.config fieldset {
+  border-radius: 8px;
+  border: 2px solid #ccc;
+}
+
+.config input {
   /* width: 25px; */
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-.typer-config-panel button {
+.config button {
   padding: 5px;
   font: bold 0.6em sans-serif;
   border: 2px solid #333;
   border-radius: 5px;
   background: none;
   cursor: pointer;
-  transform: rotate(-1.5deg);
+  transform: rotate(-10.5deg);
 }
 
-.typer-config-panel button:after {
-  content: ' >>>';
+.config button:after {
+  content: ' >>';
 }
 
-.typer-config-panel button:hover,
-.typer-config-panel button:focus {
+.config button:hover,
+.config button:focus {
   outline: none;
   background: #000;
   color: #fff;
 }
 
-.typer-config-panel input:focus,
-textarea:focus {
+.config input:focus {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 2px;
 }
 
-.typer-panel textarea {
+.panel textarea {
   width: 60%;
   height: 240px;
   margin: 12px 0px 2px 0px;
