@@ -12,64 +12,147 @@ code {
     monospace;
 }
 
+h1,
+h2 {
+  font-family: monospace;
+}
+
 .config {
   /* background-color: brown; */
   max-width: 40%;
   margin: auto;
-}
-.config legend {
-  color: black;
-  padding: 3px 6px;
-}
-
-.config fieldset {
-  border-radius: 8px;
-  border: 2px solid #ccc;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 }
 
-.config input {
-  /* width: 25px; */
-  padding: 0;
+.config-row {
+  display: table-cell;
+  vertical-align: middle;
+  /* height: 15px; */
+  /* border: 1px solid red; */
   margin: 0;
-  box-sizing: border-box;
+  padding: 0;
+}
+
+.config-row * {
+  vertical-align: middle;
 }
 
 .config button {
-  padding: 5px;
-  font: bold 0.6em sans-serif;
   border: 2px solid #333;
   border-radius: 5px;
-  background: none;
   cursor: pointer;
+  background: none;
+  font: bold 0.6em sans-serif;
+  padding: 5px;
   transform: rotate(-10.5deg);
 }
 
 .config button:after {
   content: ' >>';
 }
-
 .config button:hover,
 .config button:focus {
-  outline: none;
   background: #000;
   color: #fff;
+  outline: none;
 }
 
-.config input:focus {
+.config fieldset {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+.config input[type='number'] {
+  /* width: 50px; */
+  text-align: center;
+  width: fit-content;
+  padding: 0;
+  /* margin: 0; */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  /* margin-bottom: 4px; */
+}
+
+.config input[type='number']:focus {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 2px;
+  -moz-appearance: textfield; /* Hide arrows in Firefox */
+}
+
+/* Other arrows in Chrome, Safari, Edge and Opera */
+.config input::-webkit-outer-spin-button,
+.config input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.config input[type='range'] {
+  width: 30%;
+  /* padding-top: 20px; */
+  padding: 0;
+  margin: 0;
+}
+
+.config legend {
+  color: black;
+  padding: 3px 6px;
+  font-weight: bold;
 }
 
 .panel textarea {
-  width: 60%;
-  height: 240px;
-  margin: 12px 0px 2px 0px;
-  padding: 12px 20px;
-  box-sizing: border-box;
+  background-color: #f8f8f8;
   border: 2px solid #ccc;
   border-radius: 8px;
-  background-color: #f8f8f8;
-  resize: none;
+  box-sizing: border-box;
+  font-weight: 600;
+  color: dimgray;
+  height: 240px;
+  margin: 12px 0px 2px 0px;
   outline: none;
   overflow: auto;
+  padding: 12px 20px;
+  resize: none;
+  width: 60%;
+}
+
+.score {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  height: 40px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-value {
+  /* color: red; */
+  font-size: large;
+}
+
+.score-value-last {
+  color: red;
+}
+
+.score-value-best {
+  color: goldenrod;
+}
+
+/* .score-value:after {
+  content: ' wpm';
+  font-size: xx-small;
+} */
+
+.scores-panel {
+  /* background-color: yellow; */
+  /* border: 2px solid #ccc; */
+  /* border-radius: 8px; */
+  /* height: 60px; */
+  /* width: 20%; */
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
