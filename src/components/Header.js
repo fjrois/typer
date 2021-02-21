@@ -5,5 +5,18 @@ export default function Header(props) {
   //     <code>&#62;Typer&#60;</code>
   //   </h2>
   // );
-  return <h1>Typer_</h1>;
+  return (
+    <>
+      <div>
+        <h1>
+          Typer_
+          <img
+            className="header-logo"
+            src="/logo/keyboard/bold64.png"
+            alt="Hands over a keyboard"
+          ></img>
+        </h1>
+      </div>
+    </>
+  );
 }
