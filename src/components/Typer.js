@@ -1,6 +1,6 @@
 import React from 'react';
-import TyperConfig from './TyperConfig';
-import TyperPanel from './TyperPanel';
+import TyperConfig from './Config';
+import TyperPanel from './Panel';
 import { formatDecimalNumber } from '../helpers';
 
 class Typer extends React.Component {
