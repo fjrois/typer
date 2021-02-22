@@ -32,6 +32,8 @@
 - [ ] Measure total all time typing
 - [ ] Customizable theme colors
 - [ ] Customizable font
+- [ ] Icons
+  - https://www.flaticon.com/free-icon/keyboard_1831926?related_id=1831926&origin=search
 
 ## Bugs/Improvements
 
