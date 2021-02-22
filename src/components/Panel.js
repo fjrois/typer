@@ -366,13 +366,14 @@ class Panel extends React.Component {
   render() {
     return (
       <>
-        <div className="panel">
+        <div>
           <div>
             time: {this.state.timeFromStart} | strokes:{' '}
             {this.state.keyStrokesCount} | errors:{wordsWithUncorrectedErrors}
           </div>
           <div>
             <textarea
+              className="panel"
               ref={this.textareaRef}
               name="textarea"
               value={this.state.textareaValue}
