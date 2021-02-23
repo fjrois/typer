@@ -128,6 +128,11 @@ class Panel extends React.Component {
     const pressedKey = keyboardEvent.key;
     console.log('pressedKey:', pressedKey);
 
+    // Prevent window scrolling on space bar click
+    if (pressedKey === ' ') {
+      keyboardEvent.preventDefault();
+    }
+
     // Restart sample with Escape
     if (pressedKey === 'Escape') {
       this.restartSample();
