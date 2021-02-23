@@ -41,6 +41,8 @@ class Panel extends React.Component {
     this.stopTimer = this.stopTimer.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
     this.tickTimer = this.tickTimer.bind(this);
+
+    this.getNextSample = this.getNextSample.bind(this);
   }
 
   componentWillUnmount() {
@@ -210,6 +212,12 @@ class Panel extends React.Component {
       cursorIndex: 0,
     });
     this.stopTimer();
+  }
+
+  async getNextSample(e) {
+    await this.regenerateText();
+    const textareaElement = this.textareaRef.current;
+    textareaElement.focus();
   }
 
   handleOnBlur(event) {
@@ -390,7 +398,7 @@ class Panel extends React.Component {
               }
             />
           </div>
-          <button onClick={() => this.regenerateText()}>Next &#62;&#62;</button>
+          <button onClick={this.getNextSample}>Next &#62;&#62;</button>
         </div>
       </>
     );
