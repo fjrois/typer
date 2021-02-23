@@ -9,10 +9,12 @@
 - [x] Net WPM
 - [x] Accuracy
 - [x] ESC to restart text
+- [x] Functionality for config apply button
+- [ ] Rebuild panel with custom divs
 - [ ] Color part of text covered
 - [ ] Signal wrong char
 - [x] Next button
-- [ ] Initial score component
+- [x] Initial score component
 - [ ] CSS initial styling
 - [ ] Apply configs immediately (at least lowercase). Recover functionality?
 - [ ] Blinking cursor
@@ -38,8 +40,10 @@
 ## Bugs/Improvements
 
 - [ ] Enter for multiple paragraphs
-- [ ] Focus panel when click next
+- [x] Focus panel when click next
 - [ ] Text back to grey on blur
+- [x] Prevent window scrolling on space bar click
+- [ ] Make time measurement more accurate
 
 ## Future
 
