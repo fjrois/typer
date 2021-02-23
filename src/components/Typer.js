@@ -7,6 +7,8 @@ import React from 'react';
 import ScoresPanel from './ScoresPanel';
 
 class Typer extends React.Component {
+  panelRef = React.createRef();
+
   constructor(props) {
     super(props);
 
@@ -24,8 +26,19 @@ class Typer extends React.Component {
       },
     };
 
+    this.applyConfig = this.applyConfig.bind(this);
     this.handleConfigChange = this.handleConfigChange.bind(this);
     this.updateWpm = this.updateWpm.bind(this);
+  }
+
+  applyConfig(event) {
+    event.preventDefault();
+    console.log('Applying config...');
+    const panelElement = this.panelRef.current;
+    panelElement.regenerateText().then(() => {
+      const textareaElement = panelElement.textareaRef.current;
+      textareaElement.focus();
+    });
   }
 
   handleConfigChange(configUpdates) {
@@ -64,11 +77,16 @@ class Typer extends React.Component {
         <div>
           <ScoresPanel wpm={this.state.wpm} />
         </div>
-        <Panel config={this.state.config} updateWpm={this.updateWpm} />
+        <Panel
+          ref={this.panelRef}
+          config={this.state.config}
+          updateWpm={this.updateWpm}
+        />
         {/* <br />
         <Panel2 config={this.state.config} updateWpm={this.updateWpm} /> */}
         <br />
         <Config
+          applyConfig={this.applyConfig}
           config={this.state.config}
           handleOnChange={this.handleConfigChange}
         />

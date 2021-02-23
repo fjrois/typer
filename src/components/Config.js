@@ -128,7 +128,9 @@ function Config(props) {
             <br />
             <br />
 
-            <button type="submit">Apply</button>
+            <button type="submit" onClick={props.applyConfig}>
+              GO!
+            </button>
           </fieldset>
         </form>
       </div>
@@ -137,6 +139,7 @@ function Config(props) {
 }
 
 Config.propTypes = {
+  applyConfig: PropTypes.func.isRequired,
   config: PropTypes.shape({
     lowercase: PropTypes.bool.isRequired,
     numberOfParagraphs: PropTypes.number.isRequired,
