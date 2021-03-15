@@ -31,11 +31,16 @@
   - https://reactcommunity.org/react-transition-group/
   - https://github.com/chenglou/react-motion
   - https://github.com/react-spring/react-spring
+  - https://lottiefiles.com/
+  - https://airbnb.io/lottie/#/
 - [ ] Measure total all time typing
 - [ ] Customizable theme colors
 - [ ] Customizable font
 - [ ] Icons
   - https://www.flaticon.com/free-icon/keyboard_1831926?related_id=1831926&origin=search
+- [ ] Graphs
+  - https://canvasjs.com/ (code/react-canvasjs-chart-samples)
+  - https://www.npmjs.com/package/react-charts
 
 ## Bugs/Improvements
 
@@ -44,6 +49,7 @@
 - [ ] Text back to grey on blur
 - [x] Prevent window scrolling on space bar click
 - [ ] Make time measurement more accurate
+- [ ] Center configuration panel content
 
 ## Future
 
@@ -57,6 +63,13 @@
 - [ ] Import other platforms data
 - [ ] Previous button
 - [ ] Repeat button
+- [ ] Previous button
+- [ ] Arcade Mode
+- [ ] Strike Mode: restart on failure
+- [ ] Daily challenge + scoreboards. Email notification. Weekly challenge?
+- [ ] Profile statistics
+- [ ] Animation building being constructed
+- [ ] Animations for strike, personal record, daily record, etc
 
 # Getting Started with Create React App
 
